@@ -11,7 +11,7 @@
 
 ## 폴더 구조
 
-\`\`\`
+```
 src/
 ├── api/                  # 서버 통신 함수 모음
 ├── assets/
@@ -26,7 +26,7 @@ src/
 ├── pages/                # 페이지 단위 컴포넌트
 ├── App.jsx               # 라우팅 설정
 └── main.jsx
-\`\`\`
+```
 
 ## 브랜치 전략
 
@@ -38,24 +38,24 @@ src/
 
 1. GitHub Issue 생성
 2. 이슈 번호에 맞춰 개인 브랜치 생성
-   \`\`\`
+   ```
    git checkout develop
    git pull origin develop
    git checkout -b feat/#이슈번호/기능명
-   \`\`\`
+   ```
 3. 작업 후 커밋 & 푸시
-   \`\`\`
+   ```
    git add .
    git commit -m "✨ Feat: 작업 내용"
    git push origin feat/#이슈번호/기능명
-   \`\`\`
+   ```
 4. GitHub에서 `develop ← feat/...` 로 Pull Request 생성
 5. 팀원 코드 리뷰 후 `develop`에 merge
 6. 다른 팀원은 최신 내용 반영
-   \`\`\`
+   ```
    git checkout develop
    git pull origin develop
-   \`\`\`
+   ```
 
 ## 커밋 컨벤션
 
