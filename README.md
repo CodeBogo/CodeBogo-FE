@@ -63,15 +63,21 @@ src/
 
 | 이모지 | 타입 | 설명 |
 | --- | --- | --- |
-| 🎉 | Start | 프로젝트 시작 |
-| ✨ | Feat | 새로운 기능 추가 |
-| 🐛 | Fix | 버그 수정 |
-| 🎨 | Design | CSS 등 사용자 UI 디자인 변경 |
-| ♻️ | Refactor | 코드 리팩토링 |
-| 📝 | Docs | 문서 수정 |
-| 🔀 | Merge | 브랜치 합병 |
-| 🚚 | Rename | 파일/폴더명 수정 또는 이동 |
-| 🔥 | Remove | 파일 삭제 |
+- 🎉 **Start:** Start New Project [:tada:]
+- ✨ **Feat:** 새로운 기능을 추가 [:sparkles:]
+- 🖥️ **UI:** 화면 및 UI 컴포넌트 구현 [:desktop_computer:]
+- 🐛 **Fix:** 버그 수정 [:bug:]
+- 🎨 **Design:** CSS 등 사용자 UI 디자인 변경 [:art:]
+- ♻️ **Refactor:** 코드 리팩토링 [:recycle:]
+- 🔧 **Settings:** Changing configuration files [:wrench:]
+- 🗃️ **Comment:** 필요한 주석 추가 및 변경 [:card_file_box:]
+- ➕ **Dependency/Plugin:** Add a dependency/plugin [:heavy_plus_sign:]
+- 📝 **Docs:** 문서 수정 [:memo:]
+- 🔀 **Merge:** Merge branches [:twisted_rightwards_arrows:]
+- 🚀 **Deploy:** Deploying stuff [:rocket:]
+- 🚚 **Rename:** 파일 혹은 폴더명을 수정하거나 옮기는 작업만인 경우 [:truck:]
+- 🔥 **Remove:** 파일을 삭제하는 작업만 수행한 경우 [:fire:]
+- ⏪️ **Revert:** 전 버전으로 롤백 [:rewind:]
 
 ## 네이밍 규칙
 
