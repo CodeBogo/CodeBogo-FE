@@ -14,9 +14,9 @@ const StyledButton = styled.button`
     $variant === "secondary" ? "#6C4BA6" : "#ffffff"};
 `;
 
-function Button({ children, $variant = "primary", onClick }) {
+function Button({ children, $variant = "primary", onClick, className }) {
   return (
-    <StyledButton $variant={$variant} onClick={onClick}>
+    <StyledButton $variant={$variant} onClick={onClick} className={className}>
       {children}
     </StyledButton>
   );
