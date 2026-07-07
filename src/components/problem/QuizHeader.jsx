@@ -2,8 +2,10 @@ import styled from "styled-components";
 import CloseIcon from "../../assets/icon/close.svg";
 
 const Container = styled.div`
+  width: 350px;
   display: flex;
   flex-direction: column;
+  gap: 4px;
 `;
 const TopBar = styled.div`
   display: flex;
@@ -17,9 +19,9 @@ const Progress = styled.div`
 `;
 const Track = styled.div`
   width: 100%;
-  height: 8px;
+  height: 12px;
   position: relative;
-  background: rgba(0, 0, 0, 0.2);
+  background: #00000033;
   border-radius: 14px;
 `;
 
