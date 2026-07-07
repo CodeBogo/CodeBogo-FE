@@ -1,11 +1,28 @@
+import { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import character from "../../assets/image/codeBogoCharacter.png";
 import { useNavigate } from "react-router-dom";
+import { startQuiz } from "../../api/quiz";
 
 
 function TodayCodeCard() {
   const navigate = useNavigate();
+  const [starting, setStarting] = useState(false);
+
+  const handleStart = async () => {
+    if (starting) return;
+    setStarting(true);
+    try {
+      const { sessionId } = await startQuiz();
+      navigate("/problem", { state: { sessionId } });
+    } catch (error) {
+      console.error("퀴즈 시작 실패:", error);
+      navigate("/problem");
+    } finally {
+      setStarting(false);
+    }
+  };
 
   return (
     <Card>
@@ -13,7 +30,7 @@ function TodayCodeCard() {
       <Subtitle>C 언어 - 문법 (5문제)</Subtitle>
       <Point>최대 50 포인트</Point>
       <CharacterImg src={character} alt="캐릭터" />
-      <StyledButton $variant="secondary" onClick={() => navigate("/problem")}>
+      <StyledButton $variant="secondary" onClick={handleStart}>
         문제 풀기
       </StyledButton>
     </Card>
