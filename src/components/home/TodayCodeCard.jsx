@@ -1,19 +1,24 @@
 import styled from "styled-components";
 import Button from "./Button";
 import character from "../../assets/image/codeBogoCharacter.png";
+import { useNavigate } from "react-router-dom";
+
 
 function TodayCodeCard() {
+  const navigate = useNavigate();
+
   return (
     <Card>
       <Title>오늘의 코드</Title>
       <Subtitle>C 언어 - 문법 (5문제)</Subtitle>
       <Point>최대 50 포인트</Point>
       <CharacterImg src={character} alt="캐릭터" />
-      <StyledButton $variant="secondary">문제 풀기</StyledButton>
+      <StyledButton $variant="secondary" onClick={() => navigate("/problem")}>
+        문제 풀기
+      </StyledButton>
     </Card>
   );
 }
-
 const Card = styled.div`
   position: relative;
   width: 100%;
