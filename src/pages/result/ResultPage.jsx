@@ -1,25 +1,27 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../../components/result/Button";
 import StatRow from "../../components/result/StatRow";
 import WrongNoteCard from "../../components/result/WrongNoteCard";
-import character from "../../assets/image/codeBogoCharacter.png";
-import resultLogo from "../../assets/image/ResultBogo.png";
+import resultHeader from "../../assets/image/resultHeader.svg";
 
 function ResultPage() {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const streak = 8;
-  const score = 80;
-  const point = 50;
-  const wrongTopics = ["반복문 비교 조건"]; // 임시 데이터, 나중에 API 연동 시 교체
+  const DEFAULT_RESULT = {
+    streak: 8,
+    score: 80,
+    point: 50,
+    wrongTopics: ["반복문 비교 조건"],
+  };
+
+  const result = location.state || DEFAULT_RESULT;
+  const { streak, score, point, wrongTopics } = result;
 
   return (
     <Container>
-      <TitleImg src={resultLogo} alt="ResultBogo" />
-      <Subtitle>학습 결과</Subtitle>
-
-      <CharacterImg src={character} alt="캐릭터" />
+      <HeaderImg src={resultHeader} alt="ResultBogo 학습 결과" />
 
       <StatCard>
         <StatRow label="STREAK" subLabel="연속 학습" value={`${streak}일`} />
@@ -51,24 +53,9 @@ const Container = styled.div`
   justify-content: flex-end;
 `;
 
-const TitleImg = styled.img`
-  height: 32px;
-  margin-top: 72px;
-`;
-
-const Subtitle = styled.div`
-  color: #8666b5;
-  font-size: 18px;
-  font-family: "Pretendard", sans-serif;
-  font-weight: 600;
-  word-wrap: break-word;
-  margin-bottom: 20px;
-`;
-
-const CharacterImg = styled.img`
-  width: 120px;
-  height: 120px;
-  margin-bottom: 40px;
+const HeaderImg = styled.img`
+  width: 100%;
+  margin-bottom: 24px;
 `;
 
 const StatCard = styled.div`
