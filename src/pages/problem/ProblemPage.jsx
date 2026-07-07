@@ -62,12 +62,16 @@ const FeedbackWrapper = styled.div`
   margin-bottom: 12px;
 `;
 
+const TOTAL_QUESTIONS = 5;
+
 function ProblemPage() {
   const navigate = useNavigate();
+  const [current, setCurrent] = useState(TOTAL_QUESTIONS);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [submitted, setSubmitted] = useState(false);
 
   const isCorrect = selectedIndex === CORRECT_INDEX;
+  const isLastQuestion = current === TOTAL_QUESTIONS;
 
   const handleSelect = (index) => {
     if (submitted) return;
@@ -87,13 +91,20 @@ function ProblemPage() {
       setSubmitted(true);
       return;
     }
+    if (isLastQuestion) {
+      navigate("/result");
+      return;
+    }
+    setCurrent((prev) => prev + 1);
     setSelectedIndex(null);
     setSubmitted(false);
   };
 
+  const buttonLabel = !submitted ? "정답 보기" : isLastQuestion ? "결과 보기" : "다음 문제";
+
   return (
     <Container>
-      <QuizHeader current={2} total={5} onClose={() => navigate("/")} />
+      <QuizHeader current={current} total={TOTAL_QUESTIONS} onClose={() => navigate("/")} />
       <CodeBlockSection>
         <CodeBlock fileName="main.c" lines={CODE_LINES} highlightLine={5} />
       </CodeBlockSection>
@@ -120,7 +131,7 @@ function ProblemPage() {
           </FeedbackWrapper>
         )}
         <ProblemButton
-          label={submitted ? "다음 문제" : "정답 보기"}
+          label={buttonLabel}
           active={selectedIndex !== null}
           disabled={selectedIndex === null && !submitted}
           onClick={handleButtonClick}
