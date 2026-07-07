@@ -12,9 +12,9 @@ import settingsIconActive from "../../assets/icon/settingsIconActive.svg";
 
 const NAV_ITEMS = [
   { key: "home", label: "홈", icon: homeIcon, iconActive: homeIconActive, path: "/" },
-  { key: "stats", label: "학습 통계", icon: statsIcon, iconActive: statsIconActive, path: null },
-  { key: "ranking", label: "랭킹", icon: rankingIcon, iconActive: rankingIconActive, path: null },
-  { key: "settings", label: "설정", icon: settingsIcon, iconActive: settingsIconActive, path: null },
+  { key: "stats", label: "학습 통계", icon: statsIcon, iconActive: statsIconActive, path: "/stats" },
+  { key: "ranking", label: "랭킹", icon: rankingIcon, iconActive: rankingIconActive, path: "/ranking" },
+  { key: "settings", label: "설정", icon: settingsIcon, iconActive: settingsIconActive, path: "/settings" },
 ];
 
 function BottomNav() {
