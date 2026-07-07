@@ -42,11 +42,13 @@ function HomePage() {
   );
 }
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  padding-top: 35px;
+`;
 
 const Content = styled.div`
   padding: 30px;
-  padding-bottom: 120px;
+  padding-bottom: 85px;
 `;
 
 const StatRow = styled.div`
