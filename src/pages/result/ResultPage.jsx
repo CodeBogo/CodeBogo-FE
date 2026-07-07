@@ -1,22 +1,51 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../../components/result/Button";
 import StatRow from "../../components/result/StatRow";
 import WrongNoteCard from "../../components/result/WrongNoteCard";
 import resultHeader from "../../assets/image/resultHeader.svg";
+import { getQuizResult } from "../../api/quiz";
+
+const DEFAULT_RESULT = {
+  streak: 8,
+  score: 80,
+  point: 50,
+  wrongTopics: ["반복문 비교 조건"],
+};
 
 function ResultPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const DEFAULT_RESULT = {
-    streak: 8,
-    score: 80,
-    point: 50,
-    wrongTopics: ["반복문 비교 조건"],
-  };
+  const sessionId = location.state?.sessionId ?? null;
 
-  const result = location.state || DEFAULT_RESULT;
+  const [result, setResult] = useState(() => {
+    if (location.state?.streak != null) return location.state;
+    return DEFAULT_RESULT;
+  });
+
+  useEffect(() => {
+    if (sessionId == null) return undefined;
+    let ignore = false;
+    getQuizResult(sessionId)
+      .then((data) => {
+        if (ignore) return;
+        setResult({
+          streak: data.currentStreak,
+          score: data.scorePercent,
+          point: data.earnedPoint,
+          wrongTopics: data.wrongTopics ?? [],
+        });
+      })
+      .catch((error) => {
+        console.error("퀴즈 결과 조회 실패:", error);
+      });
+    return () => {
+      ignore = true;
+    };
+  }, [sessionId]);
+
   const { streak, score, point, wrongTopics } = result;
 
   return (
